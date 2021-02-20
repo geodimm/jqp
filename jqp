@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+JQP_CONFIG_DIR="${XDG_CONFIG_HOME}/jqp"
+JQP_CONFIG_FILE="${JQP_CONFIG_DIR}/config.json"
+
+if [ ! -f "${JQP_CONFIG_FILE}" ]; then touch "${JQP_CONFIG_FILE}"; fi
+
+jq -rR 'include "jqp";main'
