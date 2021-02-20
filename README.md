@@ -1,5 +1,7 @@
 # jqp
 
+[![CI](https://github.com/georgijd/jqp/actions/workflows/ci.yaml/badge.svg)](https://github.com/georgijd/jqp/actions/workflows/ci.yaml)
+
 Prettify JSON lines
 
 ![screenshot](./screenshots/jqp-screenshot-1.png)
