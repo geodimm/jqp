@@ -15,7 +15,7 @@ def defaultConfig: {
 };
 
 def getConfig($key):
-    $CONFIG::CONFIG[]
+    $CONFIG::CONFIG[] // {}
     | if has($key) then
         .[$key]
     else
