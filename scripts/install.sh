@@ -7,9 +7,11 @@ JQ_MODULES_DIR="${HOME}/.jq"
 JQP_BIN_DIR="${HOME}/bin/"
 JQP_MODULE_DIR="${JQ_MODULES_DIR}/jqp"
 
-echo "Downloading..."
+echo "Finding latest release..."
+asset=$(curl --silent https://api.github.com/repos/georgijd/jqp/releases/latest | jq -r ".assets[0].url")
+echo "Downloading latest release..."
 mkdir -p /tmp/jqp
-curl -s -L "https://api.github.com/repos/georgijd/jqp/tarball/main" | tar xz --strip=1 -C "/tmp/jqp"
+curl --silent --location -H "Accept: application/octet-stream" "${asset}" | tar xz -C "/tmp/jqp"
 
 echo "Installing binary..."
 mkdir -p "${JQP_BIN_DIR}"
@@ -22,5 +24,5 @@ mv /tmp/jqp/jqp.jq "${JQP_MODULE_DIR}"
 
 rm -rf /tmp/jqp
 
-which jqp &> /dev/null || (echo "Please add ${BIN_INSTALL_DIR} to your PATH to complete installation!" && exit 1)
+command -v jqp &> /dev/null || (echo "Please add ${JQP_BIN_DIR} to your PATH to complete installation!" && exit 1)
 echo "Installation complete!"
