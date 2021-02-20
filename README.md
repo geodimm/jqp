@@ -6,6 +6,16 @@ Prettify JSON lines
 
 ![screenshot](./screenshots/jqp-screenshot-1.png)
 
+## Prerequisites
+
+Please ensure [jq](https://stedolan.github.io/jq/) is installed on your system
+
+## Installation
+
+```bash
+curl -s "https://raw.githubusercontent.com/georgijd/jqp/main/scripts/install.sh" | bash
+```
+
 ## Usage
 
 Pipe the JSON into `jqp`
@@ -26,12 +36,6 @@ You can use it to format K8S JSON logs:
 
 ```bash
 kubectl logs -f <POD> | jqp
-```
-
-## Installation
-
-```bash
-curl -s "https://raw.githubusercontent.com/georgijd/jqp/main/scripts/install.sh" | bash
 ```
 
 ## Configuration
