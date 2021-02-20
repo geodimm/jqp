@@ -1,0 +1,12 @@
+{
+    "priority": {
+        "@timestamp": 1,
+        "level": 2,
+        "message": 3
+    },
+    "colour": {
+        "@timestamp": "cyan",
+        "level": "magenta",
+        "message": "green"
+    }
+}
