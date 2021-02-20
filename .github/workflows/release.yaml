@@ -13,6 +13,8 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       - name: Package
+        env:
+          TAG: ${{ steps.vars.outputs.tag }}
         run: make package
       - name: Create Release
         id: create_release
