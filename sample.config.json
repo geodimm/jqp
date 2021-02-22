@@ -8,5 +8,6 @@
         "@timestamp": "cyan",
         "level": "magenta",
         "message": "green"
-    }
+    },
+    "fieldKeyColour": "blue"
 }
