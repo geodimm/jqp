@@ -9,8 +9,8 @@ TAG="${TAG:-$(git describe --tags --abbrev=0)}"
 mkdir -p "${ROOT}/build"
 
 ASSETS=(
-    jqp
-    jqp.jq
+	jqp
+	jqp.jq
 )
 
 tar -C "${ROOT}" -czf "build/jqp-${TAG}.tar.gz" "${ASSETS[@]}"
