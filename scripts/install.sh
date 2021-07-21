@@ -9,7 +9,10 @@ JQP_MODULE_DIR="${JQ_MODULES_DIR}/jqp"
 
 echo "Finding latest release..."
 asset=$(curl --silent https://api.github.com/repos/georgijd/jqp/releases/latest | jq -r '.assets // [] | .[] | select(.name | startswith("jqp")) | .url')
-if [[ -z $asset ]]; then echo "Cannot find the latest release. Please try again later."; exit 0; fi;
+if [[ -z $asset ]]; then
+	echo "Cannot find the latest release. Please try again later."
+	exit 0
+fi
 echo "Downloading latest release..."
 mkdir -p /tmp/jqp
 curl --silent --location -H "Accept: application/octet-stream" "${asset}" | tar xz -C "/tmp/jqp"
@@ -25,5 +28,5 @@ mv /tmp/jqp/jqp.jq "${JQP_MODULE_DIR}"
 
 rm -rf /tmp/jqp
 
-command -v jqp &> /dev/null || echo "Please add ${JQP_BIN_DIR} to your PATH to complete installation!"
+command -v jqp &>/dev/null || (echo "Please add ${JQP_BIN_DIR} to your PATH to complete installation!" && exit 0)
 echo "Installation complete!"
