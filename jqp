@@ -6,4 +6,27 @@ JQP_CONFIG_FILE="${JQP_CONFIG_DIR}/config.json"
 
 if [ ! -f "${JQP_CONFIG_FILE}" ]; then mkdir -p "${JQP_CONFIG_DIR}" && touch "${JQP_CONFIG_FILE}"; fi
 
+function usage {
+    echo "usage: $0 [-hV]" >&2
+    echo "  -h      display this message" >&2
+    echo "  -V      display command version" >&2
+}
+
+while getopts "hV" option; do
+   case $option in
+      h)
+         usage
+         exit
+         ;;
+      V)
+         echo "v0.0.3"
+         exit
+         ;;
+      \?)
+         usage
+         exit 1
+         ;;
+   esac
+done
+
 jq -rR 'include "jqp";main'
