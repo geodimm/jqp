@@ -2,37 +2,18 @@ name: Release
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Set output
-        id: vars
-        run: echo "tag=${GITHUB_REF#refs/*/}" >> "$GITHUB_OUTPUT"
+        uses: actions/checkout@v3
+      - name: Set env
+        run: echo "TAG=${GITHUB_REF#refs/*/}" >> "${GITHUB_ENV}"
       - name: Package
-        env:
-          TAG: ${{ steps.vars.outputs.tag }}
         run: make package
       - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.vars.outputs.tag }}
-          release_name: Release ${{ steps.vars.outputs.tag }}
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload_release_asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: build/jqp-${{ steps.vars.outputs.tag}}.tar.gz
-          asset_name: jqp-${{ steps.vars.outputs.tag}}.tar.gz
-          asset_content_type: application/gzip
+        run: gh release create "${TAG}" --repo="${GITHUB_REPOSITORY}" --title="Release ${TAG}" --generate-notes "build/jqp-${TAG}.tar.gz#jqp-${TAG}.tar.gz"
