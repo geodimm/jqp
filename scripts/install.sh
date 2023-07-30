@@ -14,7 +14,7 @@ if [ -n "${JQP_VERSION}" ]; then
 	path="tags/$version"
 fi
 echo "Finding $version release..."
-asset=$(curl --silent "https://api.github.com/repos/georgijd/jqp/releases/$path" | jq -r '.assets // [] | .[] | select(.name | startswith("jqp")) | .url')
+asset=$(curl --silent "https://api.github.com/repos/geodimm/jqp/releases/$path" | jq -r '.assets // [] | .[] | select(.name | startswith("jqp")) | .url')
 if [[ -z $asset ]]; then
 	echo "Cannot find the latest release. Please try again later."
 	exit 0

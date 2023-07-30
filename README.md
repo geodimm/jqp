@@ -1,6 +1,6 @@
 # jqp
 
-[![CI](https://github.com/georgijd/jqp/actions/workflows/ci.yaml/badge.svg)](https://github.com/georgijd/jqp/actions/workflows/ci.yaml)
+[![CI](https://github.com/geodimm/jqp/actions/workflows/ci.yaml/badge.svg)](https://github.com/geodimm/jqp/actions/workflows/ci.yaml)
 
 Prettify JSON lines
 
@@ -13,7 +13,7 @@ Please ensure [jq](https://stedolan.github.io/jq/) is installed on your system
 ## Installation
 
 ```bash
-curl -s "https://raw.githubusercontent.com/georgijd/jqp/main/scripts/install.sh" | bash
+curl -s "https://raw.githubusercontent.com/geodimm/jqp/main/scripts/install.sh" | bash
 ```
 
 ## Usage
@@ -84,5 +84,5 @@ Only the main 16 terminal colours are supported:
 ## Uninstallation
 
 ```bash
-curl -s "https://raw.githubusercontent.com/georgijd/jqp/main/scripts/uninstall.sh" | bash
+curl -s "https://raw.githubusercontent.com/geodimm/jqp/main/scripts/uninstall.sh" | bash
 ```
